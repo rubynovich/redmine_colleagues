@@ -1,0 +1,46 @@
+%fieldset
+  %legend= l(:label_filter_plural)
+  - form_tag({}, :method => :get) do
+    = hidden_field_tag :view, params[:view]
+
+    %div{:style => "float: left"}
+      %label{:for=>'project_id'}= l(:field_project) + ":"
+      %select{:id => 'project_id', :name => 'project_id', :class => "small", :onchange => "this.form.submit(); return false;"}
+        %option{:value => ""}
+          = l(:label_project_all)
+        - @memberships.map(&:project).each do |project|
+          - if params[:project_id] == project.identifier
+            %option{:value => project.identifier, :selected => "selected"}
+              = project.name
+          - else
+            %option{:value => project.identifier}
+              = project.name
+    %div{:style => "float: left"}
+      %label{:for=>'group_id'}= l(:label_group) + ":"
+      %select{:id => 'group_id', :name => 'group_id', :class => "small", :onchange => "this.form.submit(); return false;"}
+        %option{:value => ""}
+          = l(:label_group_all)
+        - Group.all.each do |group|
+          - if params[:group_id] == group.id.to_s
+            %option{:value => group.id, :selected => "selected"}
+              = group.name
+          - else
+            %option{:value => group.id}
+              = group.name
+    %div{:style=>"clear:both"}
+  - form_tag({}, :method => :get) do
+    = hidden_field_tag :group_id, params[:group_id]
+    = hidden_field_tag :project_id, params[:project_id]
+    = hidden_field_tag :view, params[:view]
+
+    %div{:style => "float: left"}
+      %label{:for=>'name'}= l(:field_user) + ":"
+      = text_field_tag 'name', params[:name], :size => 30
+    - CustomField.all(:conditions => {:type => "UserCustomField"}).each do |custom_field|
+      - custom_field_name = "custom_field[#{custom_field.id}]"
+      %div{:style => "float: left"}
+        %label{:for=>"custom_field_#{custom_field.id}"}= custom_field.name + ":"
+        = text_field_tag custom_field_name, params[:custom_field] && params[:custom_field][custom_field.id.to_s], :size => 30
+    %div{:style => "float: left"}
+      = submit_tag l(:button_apply), :class => "small", :name => nil
+      = link_to l(:button_clear), {:action => params[:action]}, :class => 'icon icon-reload'

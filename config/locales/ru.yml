@@ -1,0 +1,8 @@
+# Russian strings go here for Rails i18n
+ru:
+  colleagues_title: "Коллеги"
+  label_colleague_plural: "Коллеги"
+  label_colleagues_index: "В виде плитки"
+  label_colleagues_list: "В виде таблицы"
+  project_module_colleagues: "Коллеги"
+  label_group_all: "Все группы"

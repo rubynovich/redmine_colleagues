@@ -1,0 +1,28 @@
+.contextual
+  = link_to l(:label_colleague_index), {:view => :index}, :class => 'icon icon-test'
+
+%h2=l(:label_colleague_plural)
+
+= render :partial => "filters"
+
+%table.list
+  %thead
+    %tr
+      %th= l(:field_name)
+      %th= l(:label_group_plural)
+      %th= l(:field_mail)
+      - User.current.available_custom_fields.each do |custom_field|
+        %th=h custom_field.name
+  %tbody
+    - @colleagues.each do |colleague|
+      %tr
+        %td.name
+          = link_to_user colleague
+        %td.groups{:align => :center}
+          - colleague.groups.each do |group|
+            = h group.name
+            %br
+        %td.email{:align => :center}
+          = mail_to(h(colleague.mail), nil, :encode => 'javascript')
+        - colleague.visible_custom_field_values.each do |custom_value|
+          %td{:align => :center}=h show_value(custom_value)

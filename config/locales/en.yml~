@@ -1,0 +1,8 @@
+# English strings go here for Rails i18n
+en:
+  colleagues_title: "colleagues"
+  label_colleague_plural: "colleagues"
+  project_module_colleagues: "colleagues"
+  label_colleagues_index: "As tiles"
+  label_colleagues_list: "As table"
+  label_group_all: "All groups"  

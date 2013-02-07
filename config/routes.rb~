@@ -1,0 +1,13 @@
+if Rails::VERSION::MAJOR >= 3
+  RedmineApp::Application.routes.draw do
+    resources :contacts
+    connect 'projects/:project_id/contacts', :controller => :contacts
+    connect 'projects/:project_id/contacts/:id', :controller => :contacts
+  end
+else
+  ActionController::Routing::Routes.draw do |map|
+    map.resources :contacts
+    map.connect 'projects/:project_id/contacts', :controller => :contacts
+    map.connect 'projects/:project_id/contacts/:id', :controller => :contacts
+  end
+end

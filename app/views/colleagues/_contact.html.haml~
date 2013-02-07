@@ -1,0 +1,22 @@
+.box.tabular
+  %table
+    %tr
+      %td
+        = avatar contact, :size => 75
+      %td{:valign => :top}
+        = link_to_user contact
+        %br
+        = mail_to contact.mail
+        - contact.visible_custom_field_values.each do |custom_value|
+          - if !custom_value.value.blank?
+            %br
+            =h show_value(custom_value)
+        -#%table
+          %tr
+            %td= link_to_user contact
+          %tr
+            %td= mail_to contact.mail
+          - contact.visible_custom_field_values.each do |custom_value|
+            - if !custom_value.value.blank?
+              %tr
+                %td=h show_value(custom_value)
