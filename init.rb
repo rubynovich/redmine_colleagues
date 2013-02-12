@@ -1,9 +1,9 @@
 require 'redmine'
 
 Redmine::Plugin.register :redmine_colleagues do
-  name 'Коллеги'
+  name 'Colleagues'
   author 'Roman Shipiev'
-  description 'Отображает всех коллег пользователя (включенных в один домен). Пользователям, которые авторизуются не через домен (LDAP) -- модуль не доступен. Отображается как базовая информация (Имя, Фамилия, E-Mail), так и дополнительная (customfields).'
+  description 'Show all your colleagues (consist in same LDAP-domain). Plugin will not work for non-domain Users'
   version '0.0.3'
   url 'http://github.com/rubynovich/redmine_colleagues'
   author_url 'http://roman.shipiev.me'
