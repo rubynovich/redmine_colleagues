@@ -1,6 +1,6 @@
 %fieldset
   %legend= l(:label_filter_plural)
-  %form_tag{:method => :get}
+  %form{:method => :get}
     = hidden_field_tag :view, params[:view]
 
     %div{:style => "float: left"}
@@ -28,7 +28,7 @@
             %option{:value => group.id}
               = group.name
     %div{:style=>"clear:both"}
-  %form_tag{:method => :get}
+  %form{:method => :get}
     = hidden_field_tag :group_id, params[:group_id]
     = hidden_field_tag :project_id, params[:project_id]
     = hidden_field_tag :view, params[:view]

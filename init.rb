@@ -5,7 +5,7 @@ Redmine::Plugin.register :redmine_colleagues do
   author 'Roman Shipiev'
   description 'Show all your colleagues (consist in same LDAP-domain). Plugin will not work for non-domain Users'
   version '0.0.3'
-  url 'http://github.com/rubynovich/redmine_colleagues'
+  url 'https://github.com/rubynovich/redmine_colleagues'
   author_url 'http://roman.shipiev.me'
 
   project_module :colleagues do
