@@ -7,6 +7,13 @@
         = link_to_user colleague
         %br
         = mail_to colleague.mail
+        - if colleague.job_title.present?
+          %br
+          = colleague.job_title
+        - if colleague.phone.present?
+          %br
+          = colleague.phone
+
         - colleague.visible_custom_field_values.each do |custom_value|
           - if !custom_value.value.blank?
             %br
