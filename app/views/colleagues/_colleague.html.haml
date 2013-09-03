@@ -4,7 +4,7 @@
       %td
         = avatar colleague, :size => 75
       %td{:valign => :top}
-        %p= link_to_user colleague
+        = link_to_user colleague
         %ul{style: "list-style: none;"}
           %li= mail_to colleague.mail
           = profile_field_li(colleague,:job_title)
