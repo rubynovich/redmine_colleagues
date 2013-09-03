@@ -7,8 +7,8 @@
         %p= link_to_user colleague
         %ul{style: "list-style: none;"}
           %li= mail_to colleague.mail
-          = profile_field_li(:job_title)
-          = phones
+          = profile_field_li(colleague,:job_title)
+          = phones(colleague)
 
         - colleague.visible_custom_field_values.each do |custom_value|
           - if !custom_value.value.blank?

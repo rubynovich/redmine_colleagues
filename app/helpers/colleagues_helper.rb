@@ -1,7 +1,7 @@
 module ColleaguesHelper
 
-  def profile_field_li(field)
-    if @colleague.send(field.to_s).present?
+  def profile_field_li(colleague, field)
+    if colleague.send(field.to_s).present?
       "<li> #{colleague.field} </li>" 
     end
   end
@@ -10,9 +10,9 @@ module ColleaguesHelper
     "<li class=\"phone icon icon-phone\"> #{ph_str} </li>"
   end
 
-  def phones
-    if @colleague.phone.present?
-      @colleague.phone.split(',').map{|ph| phone_li(ph.strip)+"\n"}
+  def phones(colleague)
+    if colleague.phone.present?
+      colleague.phone.split(',').map{|ph| phone_li(ph.strip)+"\n"}
     end
   end
       
