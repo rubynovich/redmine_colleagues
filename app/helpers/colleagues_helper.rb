@@ -6,13 +6,13 @@ module ColleaguesHelper
     end
   end
 
-  def phone_li(ph_str)
-    "<li class=\"phone icon icon-phone\"> #{ph_str} </li>"
+  def mail_li(colleague)
+    "<li class=\"email icon icon-email\"> #{mail_to(colleague.mail)} </li>".html_safe
   end
 
-  def phones(colleague)
+  def phone_li(colleague)
     if colleague.phone.present?
-      colleague.phone.split(',').map{|ph| phone_li(ph.strip)}.join("\n").html_safe
+      colleague.phone.split(',').map{|ph| "<li class=\"phone icon icon-phone\"> #{ph.strip} </li>"}.join("\n").html_safe
     end
   end
       
