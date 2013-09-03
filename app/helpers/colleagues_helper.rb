@@ -2,7 +2,7 @@ module ColleaguesHelper
 
   def profile_field_li(colleague, field)
     if colleague.send(field.to_s).present?
-      "<li> #{colleague.send(field.to_s)} </li>" 
+      "<li> #{colleague.send(field.to_s)} </li>".html_safe
     end
   end
 
@@ -12,8 +12,10 @@ module ColleaguesHelper
 
   def phones(colleague)
     if colleague.phone.present?
-      colleague.phone.split(',').map{|ph| phone_li(ph.strip)+"\n"}
+      colleague.phone.split(',').map{|ph| phone_li(ph.strip)}.join("\n").html_safe
     end
   end
       
 end
+
+
