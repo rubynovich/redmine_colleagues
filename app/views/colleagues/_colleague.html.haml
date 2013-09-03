@@ -4,15 +4,11 @@
       %td
         = avatar colleague, :size => 75
       %td{:valign => :top}
-        = link_to_user colleague
-        %br
-        = mail_to colleague.mail
-        - if colleague.job_title.present?
-          %br
-          = colleague.job_title
-        - if colleague.phone.present?
-          %br
-          = colleague.phone
+        %p= link_to_user colleague
+        %ul{style: "list-style: none;"}
+          %li= mail_to colleague.mail
+          = profile_field_li(:job_title)
+          = phones
 
         - colleague.visible_custom_field_values.each do |custom_value|
           - if !custom_value.value.blank?
