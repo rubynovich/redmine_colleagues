@@ -2,7 +2,7 @@ module ColleaguesHelper
 
   def profile_field_li(colleague, field)
     if colleague.send(field.to_s).present?
-      "<li> #{colleague.field} </li>" 
+      "<li> #{colleague.send(field.to_s)} </li>" 
     end
   end
 
