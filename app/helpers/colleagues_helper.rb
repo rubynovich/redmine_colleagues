@@ -14,7 +14,7 @@ module ColleaguesHelper
     if colleague.address.present?
       city = colleague.address.split(',')[0]
       style = "background: url('../images/map.png') no-repeat scroll 0 50% transparent;"
-      "<li style='#{style}'> #{city} </li>".html_safe
+      "<li style=\"#{style}\"> #{city} </li>".html_safe
     end
   end
 
