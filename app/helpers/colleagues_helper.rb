@@ -20,10 +20,8 @@ module ColleaguesHelper
 
   def phone_li(colleague)
     if colleague.phone.present?
-      colleague.phone.split(/,\s+/).map{|ph| "<li class=\"phone icon icon-phone\"> #{ph.strip} </li>"}.join("\n").html_safe
+      colleague.phones.map{|ph| "<li class=\"phone icon icon-phone\"> #{ph.strip} </li>"}.join("\n").html_safe
     end
   end
-      
+
 end
-
-
