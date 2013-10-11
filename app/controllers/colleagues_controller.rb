@@ -11,7 +11,7 @@ class ColleaguesController < ApplicationController
 
     @memberships = Member.find(:all, :conditions => {:user_id => User.current.id})
 
-    @colleagues = User.active.from_project(@project).like(params[:name])
+    @colleagues = Person.active.from_project(@project).like(params[:name])
     @colleagues = @colleagues.in_group(params[:group_id]) if params[:group_id].present?
     if params[:custom_field].present?
       params[:custom_field].each do |key, value|
