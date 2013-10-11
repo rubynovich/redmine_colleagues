@@ -11,8 +11,22 @@ Redmine::Plugin.register :redmine_colleagues do
   project_module :colleagues do
   end
 
+  Redmine::MenuManager.map :top_menu do |menu| 
+
+    unless menu.exists?(:internal_intercourse)
+      menu.push(:internal_intercourse, "#", {:parent => :top_menu, :caption => :label_internal_intercourse_menu})
+    end
+
+    menu.push( :colleagues, {:controller => :colleagues, :action => :index}, 
+               { :parent => :internal_intercourse,            
+                 :caption => :colleagues_title, 
+                 :if => Proc.new{ User.current.auth_source_id? }
+               })
+    
+  end
+
   menu :project_menu, :colleagues, {:controller => :colleagues, :action => :index}, :caption => :colleagues_title, :param => :project_id, :if => Proc.new{ User.current.auth_source_id? }
-  menu :top_menu, :colleagues, {:controller => :colleagues, :action => :index}, :caption => :colleagues_title, :if => Proc.new{ User.current.auth_source_id? }
+
 end
 
 if Rails::VERSION::MAJOR < 3

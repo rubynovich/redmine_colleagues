@@ -1,5 +1,8 @@
 # Russian strings go here for Rails i18n
 ru:
+
+  label_internal_intercourse_menu: Внутреннее взаимодействие
+
   colleagues_title: "Коллеги"
   label_colleague_plural: "Коллеги"
   label_colleagues_index: "В виде плитки"
