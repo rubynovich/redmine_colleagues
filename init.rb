@@ -14,7 +14,11 @@ Redmine::Plugin.register :redmine_colleagues do
   Redmine::MenuManager.map :top_menu do |menu| 
 
     unless menu.exists?(:internal_intercourse)
-      menu.push(:internal_intercourse, "#", {:parent => :top_menu, :caption => :label_internal_intercourse_menu})
+      menu.push(:internal_intercourse, "#", 
+                { :after => :public_intercourse,
+                  :parent => :top_menu, 
+                  :caption => :label_internal_intercourse_menu
+                })
     end
 
     menu.push( :colleagues, {:controller => :colleagues, :action => :index}, 
