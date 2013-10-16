@@ -13,16 +13,9 @@ Redmine::Plugin.register :redmine_colleagues do
 
   Redmine::MenuManager.map :top_menu do |menu| 
 
-    unless menu.exists?(:internal_intercourse)
-      menu.push(:internal_intercourse, "#", 
-                { :after => :public_intercourse,
-                  :parent => :top_menu, 
-                  :caption => :label_internal_intercourse_menu
-                })
-    end
-
+    parent = menu.exists?(:internal_intercourse) ? :internal_intercourse : :top_menu
     menu.push( :colleagues, {:controller => :colleagues, :action => :index}, 
-               { :parent => :internal_intercourse,            
+               { :parent => parent,            
                  :caption => :colleagues_title, 
                  :if => Proc.new{ User.current.auth_source_id? }
                })
